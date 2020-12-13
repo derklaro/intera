@@ -23,7 +23,7 @@ come to that later). `write` converts the arabic letter back to a roman number s
 
 ```java
   final int arabic=Intera.defaults().parse("MDCCLXXX"); // 1780
-final String roman=Intera.defaults().write(1780); // MDCCLXXX
+  final String roman=Intera.defaults().write(1780); // MDCCLXXX
 ```
 
 The default number mapping is:
