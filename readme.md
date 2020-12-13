@@ -1,6 +1,7 @@
 # intera
 
 ![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/derklaro/intera/build/master)
+[![JitPack](https://jitpack.io/v/derklaro/intera.svg)](https://jitpack.io/#derklaro/intera)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue)](license.txt)
 
 A user-interface library for converting rome numerals to arabic and back written in java.
@@ -82,6 +83,35 @@ otherwise.
 
 This was a quick go-trough all features of the library, for more information check the
 documentation.
+
+### Get intera
+
+The compiled jar file is always included in the [latest release](https://github.com/derklaro/intera/releases/latest).
+
+For gradle you may use:
+```groovy
+maven {
+    name 'jitpack'
+    url 'https://jitpack.io'
+}
+
+dependencies {
+    implementation 'com.github.derklaro:intera:1.0.0'
+}
+```
+For maven:
+```xml
+<repository>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io</url>
+</repository>
+
+<dependency>
+    <groupId>com.github.derklaro</groupId>
+    <artifactId>intera</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
 
 ### Contributing
 
