@@ -1,0 +1,43 @@
+plugins {
+    id 'java'
+    id 'checkstyle'
+}
+
+version "1.0.0-SNAPSHOT"
+group "com.github.derklaro"
+description = "A user-interface library for converting rome numerals to arabic and back written in java"
+
+defaultTasks "clean", "build", "test", "jar"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // api spot bugs
+    compileOnly 'org.jetbrains:annotations:20.1.0'
+    // tests
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+}
+
+jar {
+    from rootProject.file("license.txt")
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+compileJava {
+    options.encoding = "UTF-8"
+}
+
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
+
+test {
+    useJUnitPlatform()
+}
