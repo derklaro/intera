@@ -37,9 +37,9 @@ You can change this mapping by using the intera-builder:
 
 ```java
   final Intera intera = Intera.builder()
-        .registerAssociation('X',100)
-        .registerAssociation('I',1000)
-        .registerAssociation('M',10000)
+        .registerAssociation('X', 100)
+        .registerAssociation('I', 1000)
+        .registerAssociation('M', 10000)
         .build();
 ```
 
@@ -74,7 +74,7 @@ To modify the behaviour you can simply use:
 ```java
   final Intera intera = Intera.builder()
         .defaultAssociations()
-        .subtractionValidator((number,subtraction)->number>subtraction)
+        .subtractionValidator((number, subtraction) -> number > subtraction)
         .build();
 ```
 
