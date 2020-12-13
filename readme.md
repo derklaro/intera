@@ -11,7 +11,7 @@ For basic usage you can just use the default implementation with all common roma
 applied. To obtain the default instance you can simply use:
 
 ```java
-  final Intera intera=Intera.defaults();
+  final Intera intera = Intera.defaults();
 ```
 
 The default instance is shared, and you don't have to use a local variable to save the instance. All
@@ -22,8 +22,8 @@ number as a string to an arabic number using the known associations defined in t
 come to that later). `write` converts the arabic letter back to a roman number string. For example:
 
 ```java
-  final int arabic=Intera.defaults().parse("MDCCLXXX"); // 1780
-  final String roman=Intera.defaults().write(1780); // MDCCLXXX
+  final int arabic = Intera.defaults().parse("MDCCLXXX"); // 1780
+  final String roman = Intera.defaults().write(1780); // MDCCLXXX
 ```
 
 The default number mapping is:
@@ -35,7 +35,7 @@ The default number mapping is:
 You can change this mapping by using the intera-builder:
 
 ```java
-  final Intera intera=Intera.builder()
+  final Intera intera = Intera.builder()
         .registerAssociation('X',100)
         .registerAssociation('I',1000)
         .registerAssociation('M',10000)
@@ -50,7 +50,7 @@ This behaviour can be modified in the builder. In this example we set the maximu
 row to 5. If this value is smaller or equal to 1 the check is disabled:
 
 ```java
-  final Intera intera=Intera.builder()
+  final Intera intera = Intera.builder()
         .defaultAssociations()
         .maxSameCharsInRow(5)
         .build();
@@ -62,7 +62,7 @@ These rules can get disabled by using the builder as well as modified. To disabl
 use:
 
 ```java
-  final Intera intera=Intera.builder()
+  final Intera intera = Intera.builder()
         .defaultAssociations()
         .subtractionValidator(SubtractionValidator.disabled())
         .build();
@@ -71,7 +71,7 @@ use:
 To modify the behaviour you can simply use:
 
 ```java
-  final Intera intera=Intera.builder()
+  final Intera intera = Intera.builder()
         .defaultAssociations()
         .subtractionValidator((number,subtraction)->number>subtraction)
         .build();
