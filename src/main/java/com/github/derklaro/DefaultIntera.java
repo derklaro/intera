@@ -42,11 +42,6 @@ public class DefaultIntera implements Intera {
     this.associations = associations;
   }
 
-  public static void main(String[] args) {
-    DefaultIntera intera = new DefaultIntera(4, SubtractionValidator.defaults(), Utils.DEFAULT_ASSERTIONS);
-    intera.write(30);
-  }
-
   @Override
   public int parse(@NotNull String rome) throws InteraException {
     Utils.notNull(rome, "rome");
