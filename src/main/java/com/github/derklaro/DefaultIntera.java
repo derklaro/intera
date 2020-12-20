@@ -114,7 +114,6 @@ public class DefaultIntera implements Intera {
           hits++;
         }
         if (hits > this.maxCharsInRow + 1) {
-          System.out.println(hits + " - " + this.maxCharsInRow);
           builder.delete(builder.length() - hits, builder.length());
           final int association = this.associate(c);
           final int targetNumber = association * hits;
