@@ -23,8 +23,8 @@ number as a string to an arabic number using the known associations defined in t
 come to that later). `write` converts the arabic letter back to a roman number string. For example:
 
 ```java
-  final int arabic = Intera.defaults().parse("MDCCLXXX"); // 1780
-  final String roman = Intera.defaults().write(1780); // MDCCLXXX
+final int arabic = Intera.defaults().parse("MDCCLXXX"); // 1780
+final String roman = Intera.defaults().write(1780); // MDCCLXXX
 ```
 
 The default number mapping is:
@@ -36,11 +36,11 @@ The default number mapping is:
 You can change this mapping by using the intera-builder:
 
 ```java
-  final Intera intera = Intera.builder()
-        .registerAssociation('X', 100)
-        .registerAssociation('I', 1000)
-        .registerAssociation('M', 10000)
-        .build();
+final Intera intera = Intera.builder()
+  .registerAssociation('X', 100)
+  .registerAssociation('I', 1000)
+  .registerAssociation('M', 10000)
+  .build();
 ```
 
 You can also change the mathematical behaviour of the instance. By default, a maximum of three same
@@ -51,10 +51,10 @@ This behaviour can be modified in the builder. In this example we set the maximu
 row to 5. If this value is smaller or equal to 1 the check is disabled:
 
 ```java
-  final Intera intera = Intera.builder()
-        .defaultAssociations()
-        .maxSameCharsInRow(5)
-        .build();
+final Intera intera = Intera.builder()
+  .defaultAssociations()
+  .maxSameCharsInRow(5)
+  .build();
 ```
 
 There is still one other rule in the roman math system. Subtractions are only allowed in some cases.
@@ -63,19 +63,19 @@ These rules can get disabled by using the builder as well as modified. To disabl
 use:
 
 ```java
-  final Intera intera = Intera.builder()
-        .defaultAssociations()
-        .subtractionValidator(SubtractionValidator.disabled())
-        .build();
+  final Intera intera=Intera.builder()
+  .defaultAssociations()
+  .subtractionValidator(SubtractionValidator.disabled())
+  .build();
 ```
 
 To modify the behaviour you can simply use:
 
 ```java
-  final Intera intera = Intera.builder()
-        .defaultAssociations()
-        .subtractionValidator((number, subtraction) -> number > subtraction)
-        .build();
+  final Intera intera=Intera.builder()
+  .defaultAssociations()
+  .subtractionValidator((number,subtraction)->number>subtraction)
+  .build();
 ```
 
 The result is a boolean which when `true` indicates that the operation can't be done, `false`
@@ -86,30 +86,34 @@ documentation.
 
 ### Get intera
 
-The compiled jar file is always included in the [latest release](https://github.com/derklaro/intera/releases/latest).
+The compiled jar file is always included in
+the [latest release](https://github.com/derklaro/intera/releases/latest).
 
 For gradle you may use:
+
 ```groovy
 maven {
-    name 'jitpack'
-    url 'https://jitpack.io'
+  name 'jitpack'
+  url 'https://jitpack.io'
 }
 
 dependencies {
-    implementation 'com.github.derklaro:intera:1.0.0'
+  implementation 'com.github.derklaro:intera:1.0.1'
 }
 ```
+
 For maven:
+
 ```xml
 <repository>
-    <id>jitpack.io</id>
-    <url>https://jitpack.io</url>
+  <id>jitpack.io</id>
+  <url>https://jitpack.io</url>
 </repository>
 
 <dependency>
-    <groupId>com.github.derklaro</groupId>
-    <artifactId>intera</artifactId>
-    <version>1.0.0</version>
+  <groupId>com.github.derklaro</groupId>
+  <artifactId>intera</artifactId>
+  <version>1.0.1</version>
 </dependency>
 ```
 
