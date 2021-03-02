@@ -14,7 +14,7 @@ repositories {
 }
 
 dependencies {
-    // api spot bugs
+    // to spot bugs
     compileOnly 'org.jetbrains:annotations:20.1.0'
     // tests
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.1'
