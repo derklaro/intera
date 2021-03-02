@@ -25,18 +25,32 @@
 package com.github.derklaro;
 
 /**
- * An exception thrown whenever an internal intera exception occurs.
+ * A subtraction validator which checks if the default subtraction rules as listed
+ * <a href="https://simple.wikipedia.org/wiki/Roman_numerals#Subtraction_rule">here</a> are used.
  *
  * @author Pasqual Koschmieder
- * @since 1.0.0
+ * @since 1.0.1
  */
-public class InteraException extends RuntimeException {
+final class DefaultSubtractionValidator implements SubtractionValidator {
   /**
-   * Creates a new instance of an intera exception.
-   *
-   * @param message the detail message why the excpetion occurred.
+   * The jvm static instance of the default subtraction validator.
    */
-  public InteraException(String message) {
-    super(message);
+  public static final DefaultSubtractionValidator INSTANCE = new DefaultSubtractionValidator();
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public boolean isIllegalSubtraction(int number, int numberToSubtract) {
+    switch (numberToSubtract) {
+      case 1:
+        return number != 5 && number != 10;
+      case 10:
+        return number != 50 && number != 100;
+      case 100:
+        return number != 500 && number != 1000;
+      default:
+        return true;
+    }
   }
 }

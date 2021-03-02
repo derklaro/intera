@@ -26,16 +26,42 @@ package com.github.derklaro;
 
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * An interface called by an {@link Intera} instance to check if an subtraction is illegal or not.
+ * See <a href="https://simple.wikipedia.org/wiki/Roman_numerals#Subtraction_rule">here</a> which
+ * subtractions are allowed by default. A default checker is submitted by {@link SubtractionValidator#defaults()}.
+ *
+ * @author Pasqual Koschmieder
+ * @since 1.0.0
+ */
 @FunctionalInterface
 public interface SubtractionValidator {
-
+  /**
+   * Get a jvm static subtraction validator which does not check anything.
+   *
+   * @return a jvm static subtraction validator which does not check anything.
+   */
   static @NotNull SubtractionValidator disabled() {
     return Utils.DISABLED;
   }
 
+  /**
+   * Get a jvm static subtraction validator which checks if the default subtraction rules
+   * as listed <a href="https://simple.wikipedia.org/wiki/Roman_numerals#Subtraction_rule">here</a>
+   * are used.
+   *
+   * @return a jvm static subtraction validator which checks for the default subtraction rules.
+   */
   static @NotNull SubtractionValidator defaults() {
-    return Utils.DEFAULT_VALIDATOR;
+    return DefaultSubtractionValidator.INSTANCE;
   }
 
+  /**
+   * Checks if a subtraction is invalid.
+   *
+   * @param number           The number from which the subtraction will be made.
+   * @param numberToSubtract The number which gets subtracted.
+   * @return If the subtraction is against the rules of the validator or not.
+   */
   boolean isIllegalSubtraction(int number, int numberToSubtract);
 }

@@ -30,7 +30,14 @@ import java.util.AbstractMap;
 import java.util.Map;
 import java.util.Set;
 
-public class DefaultIntera implements Intera {
+/**
+ * A default implementation of {@link Intera}. Use {@link Intera#builder()} to create
+ * an instance of this class.
+ *
+ * @author Pasqual Koschmieder
+ * @since 1.0.0
+ */
+final class DefaultIntera implements Intera {
 
   private final int maxCharsInRow;
   private final SubtractionValidator subtractionValidator;
@@ -42,6 +49,9 @@ public class DefaultIntera implements Intera {
     this.associations = associations;
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public int parse(@NotNull String rome) throws InteraException {
     Utils.notNull(rome, "rome");
@@ -63,6 +73,9 @@ public class DefaultIntera implements Intera {
     return result;
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public @NotNull String write(int number) throws InteraException {
     final StringBuilder builder = new StringBuilder();
@@ -133,6 +146,13 @@ public class DefaultIntera implements Intera {
     return builder.toString();
   }
 
+  /**
+   * Associates the given char with the arabic number.
+   *
+   * @param c The char to associate.
+   * @return The arabic association of the char.
+   * @throws InteraException If there is no association with the given char.
+   */
   private int associate(char c) throws InteraException {
     final Integer association = this.associations.get(c);
     if (association == null) {
@@ -141,6 +161,12 @@ public class DefaultIntera implements Intera {
     return association;
   }
 
+  /**
+   * Gets the next association with the given number which is higher than the current one.
+   *
+   * @param current The current number.
+   * @return The higher association or {@code null} if there is no association.
+   */
   private Map.Entry<Character, Integer> upOne(int current) {
     Map.Entry<Character, Integer> last = null;
     for (Map.Entry<Character, Integer> entry : this.associations.entrySet()) {
@@ -151,6 +177,11 @@ public class DefaultIntera implements Intera {
     return last;
   }
 
+  /**
+   * Gets the highest association which is known to this instance.
+   *
+   * @return the highest association which is known to this instance.
+   */
   private int getHighestAssociation() {
     int result = 0;
     for (Integer value : this.associations.values()) {

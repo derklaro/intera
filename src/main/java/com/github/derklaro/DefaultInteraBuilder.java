@@ -29,12 +29,30 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * An default implementation of {@link Intera.Builder}. Use {@link Intera#builder()} to
+ * create an instance of this class.
+ *
+ * @author Pasqual Koschmieder
+ * @since 1.0.0
+ */
 final class DefaultInteraBuilder implements Intera.Builder {
-
-  private int maxCharsInRow = 3;
-  private SubtractionValidator subtractionValidator = Utils.DEFAULT_VALIDATOR;
+  /**
+   * The rome to arabic number mappings to use.
+   */
   private final Map<Character, Integer> associations = new ConcurrentHashMap<>();
+  /**
+   * The maximum rome numbers allowed in a row.
+   */
+  private int maxCharsInRow = 3;
+  /**
+   * The subtraction validator to use.
+   */
+  private SubtractionValidator subtractionValidator = SubtractionValidator.defaults();
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public Intera.@NotNull Builder defaultAssociations() {
     this.associations.clear();
@@ -42,12 +60,18 @@ final class DefaultInteraBuilder implements Intera.Builder {
     return this;
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public Intera.@NotNull Builder registerAssociation(char romeNumberChar, int arabicValue) {
     this.associations.put(romeNumberChar, arabicValue);
     return this;
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public Intera.@NotNull Builder registerAssociations(@NotNull Map<Character, Integer> romeToArabicNumbers) {
     Utils.notNull(romeToArabicNumbers, "romeToArabicNumbers");
@@ -55,6 +79,9 @@ final class DefaultInteraBuilder implements Intera.Builder {
     return this;
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public Intera.@NotNull Builder subtractionValidator(@NotNull SubtractionValidator validator) {
     Utils.notNull(validator, "validator");
@@ -62,12 +89,18 @@ final class DefaultInteraBuilder implements Intera.Builder {
     return this;
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public Intera.@NotNull Builder maxSameCharsInRow(int maxChars) {
     this.maxCharsInRow = maxChars;
     return this;
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public @NotNull Intera build() {
     if (this.associations.isEmpty()) {
