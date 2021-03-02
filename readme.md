@@ -12,7 +12,7 @@ For basic usage you can just use the default implementation with all common roma
 applied. To obtain the default instance you can simply use:
 
 ```java
-  final Intera intera = Intera.defaults();
+final Intera intera = Intera.defaults();
 ```
 
 The default instance is shared, and you don't have to use a local variable to save the instance. All
@@ -63,7 +63,7 @@ These rules can get disabled by using the builder as well as modified. To disabl
 use:
 
 ```java
-  final Intera intera=Intera.builder()
+final Intera intera = Intera.builder()
   .defaultAssociations()
   .subtractionValidator(SubtractionValidator.disabled())
   .build();
@@ -72,9 +72,9 @@ use:
 To modify the behaviour you can simply use:
 
 ```java
-  final Intera intera=Intera.builder()
+final Intera intera = Intera.builder()
   .defaultAssociations()
-  .subtractionValidator((number,subtraction)->number>subtraction)
+  .subtractionValidator((number, subtraction) -> number > subtraction)
   .build();
 ```
 
